@@ -20,7 +20,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link mx-2 dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            Company
+                            Options
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li><a class="dropdown-item" href="#">Your Profile</a></li>
@@ -37,7 +37,7 @@
             </div>
         </div>
     </nav>
-    <div class="container mt-5 ">
+    <div class="container mt-5">
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -47,17 +47,24 @@
                     <th scope="col">description</th>
                     <th scope="col">price</th>
                     <th scope="col">category</th>
+                    <th scope="col">action</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($data['products'] as $product)
                     <tr>
                         <th scope="row">{{ $product->id }}</th>
-                        <td><img class="img-thumbnail" src="{{ asset('photos/images.png') }}" alt=""></td>
+                        <td><img class="img-thumbnail w-50" src="{{ asset('photos/images.png') }}" alt=""></td>
                         <td>{{ $product->title }}</td>
                         <td>{{ $product->description }}</td>
                         <td>{{ $product->price }}</td>
                         <td>{{ $product->category }}</td>
+                        <td>
+                            <div class="buttons d-flex">
+                                <button type="button" class="btn btn-danger p-1 m-1">Delete</button>
+                                <button type="button" class="btn btn-warning p-1 m-1">Update</button>
+                            </div>
+                        </td>
                     </tr>
                 @endforeach
 
