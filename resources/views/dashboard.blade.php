@@ -54,15 +54,64 @@
                 @foreach ($data['products'] as $product)
                     <tr>
                         <th scope="row">{{ $product->id }}</th>
-                        <td><img class="img-thumbnail w-50" src="{{ asset('photos/images.png') }}" alt=""></td>
+                        <td><img class="img-thumbnail" src="{{ asset('photos/' . $product->image) }}" alt=""></td>
                         <td>{{ $product->title }}</td>
                         <td>{{ $product->description }}</td>
                         <td>{{ $product->price }}</td>
                         <td>{{ $product->category }}</td>
                         <td>
                             <div class="buttons d-flex">
-                                <button type="button" class="btn btn-danger p-1 m-1">Delete</button>
-                                <button type="button" class="btn btn-warning p-1 m-1">Update</button>
+                                <button type="button" class="btn btn-danger px-3 m-1">Delete</button>
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn bg-info bg-gradient text-dark px-3 m-1"
+                                    data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    Update
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Product</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form>
+                                                    <div class="form-group">
+                                                      <label for="title">Title</label>
+                                                      <input type="text" class="form-control" placeholder="Title">
+                                                      <small id="emailHelp" class="form-text text-muted"></small>
+                                                    </div>
+                                                    <div class="form-group">
+                                                      <label for="Description">Description</label>
+                                                      <input type="text" class="form-control" placeholder="Description">
+                                                    </div>
+                                                    <div class="form-group">
+                                                      <label for="Price">Price</label>
+                                                      <input type="text" class="form-control" placeholder="Price">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="Category">Category</label>
+                                                        <input type="text" class="form-control" placeholder="Category">
+                                                      </div>
+                                                      <div class="form-group">
+                                                        <label for="Image">Image</label>
+                                                        <input type="text" class="form-control" placeholder="Image">
+                                                      </div>
+                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                  </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary">Save changes</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </td>
                     </tr>
