@@ -8,7 +8,6 @@
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class=" collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav ms-auto ">
                     <li class="nav-item">
@@ -37,8 +36,8 @@
             </div>
         </div>
     </nav>
-    <div class="container mt-5">
-        <table class="table table-striped">
+    <div class="container mt-5 p-5 bg-light shadow-lg bg-white rounded">
+        <table id="table" class="ui celled table">
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -67,7 +66,6 @@
                                     data-bs-toggle="modal" data-bs-target="#exampleModal">
                                     Update
                                 </button>
-
                                 <!-- Modal -->
                                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                                     aria-hidden="true">
@@ -81,28 +79,29 @@
                                             <div class="modal-body">
                                                 <form>
                                                     <div class="form-group">
-                                                      <label for="title">Title</label>
-                                                      <input type="text" class="form-control" placeholder="Title">
-                                                      <small id="emailHelp" class="form-text text-muted"></small>
+                                                        <label for="title">Title</label>
+                                                        <input type="text" class="form-control" placeholder="Title">
+                                                        <small id="emailHelp" class="form-text text-muted"></small>
                                                     </div>
                                                     <div class="form-group">
-                                                      <label for="Description">Description</label>
-                                                      <input type="text" class="form-control" placeholder="Description">
+                                                        <label for="Description">Description</label>
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Description">
                                                     </div>
                                                     <div class="form-group">
-                                                      <label for="Price">Price</label>
-                                                      <input type="text" class="form-control" placeholder="Price">
+                                                        <label for="Price">Price</label>
+                                                        <input type="text" class="form-control" placeholder="Price">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="Category">Category</label>
                                                         <input type="text" class="form-control" placeholder="Category">
-                                                      </div>
-                                                      <div class="form-group">
+                                                    </div>
+                                                    <div class="form-group">
                                                         <label for="Image">Image</label>
                                                         <input type="text" class="form-control" placeholder="Image">
-                                                      </div>
+                                                    </div>
                                                     <button type="submit" class="btn btn-primary">Submit</button>
-                                                  </form>
+                                                </form>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
@@ -119,5 +118,24 @@
 
             </tbody>
         </table>
+
     </div>
+    <script>
+        $(document).ready(function() {
+            $('#table').DataTable({
+                "dom": 'frtip',
+                "columnDefs": [{
+                    "targets": 1,
+                    "orderable": false
+                }],
+                "language": {
+                    "searchPlaceholder": "Search records",
+                    "search": "",
+                },
+                "info": false
+            });
+
+            $('input[type="search"]').addClass('form-control rounded mb-5 px-3');
+        });
+    </script>
 @endsection
