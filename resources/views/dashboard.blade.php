@@ -1,20 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary p-3">
+    <nav class="navbar navbar-expand-lg navbar-dark p-3 text-white">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Hello, {{ $data['admin'] }}</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class=" collapse navbar-collapse" id="navbarNavDropdown">
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav ms-auto ">
                     <li class="nav-item">
                         <a class="nav-link mx-2 active" aria-current="page" href="{{ route('dashboard') }}">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link mx-2" href="{{ route('addProduct') }}">Add Products</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link mx-2 dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
@@ -32,11 +29,82 @@
                                 </a></li>
                         </ul>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link mx-2 " aria-current="page" href="#">Orders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mx-2 " aria-current="page" href="#">View Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mx-2" href="{{ route('addProduct') }}">Add Products</a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
-    <div class="container mt-5 p-5 bg-light shadow-lg bg-white rounded">
+    <div class="container mt-5 py-5 px-3 shadow-lg rounded">
+        <div class="row g-3 my-2 text-white">
+            <div class="col-md-3">
+                <div class="cardComponent p-3 shadow-sm d-flex justify-content-around align-items-center rounded">
+                    <div>
+                        <h3 class="fs-2">720</h3>
+                        <p class="fs-5">Products</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="cardComponent p-3 shadow-sm d-flex justify-content-around align-items-center rounded">
+                    <div>
+                        <h3 class="fs-2">4920</h3>
+                        <p class="fs-5">Sales</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="cardComponent p-3 shadow-sm d-flex justify-content-around align-items-center rounded">
+                    <div>
+                        <h3 class="fs-2">3899</h3>
+                        <p class="fs-5">Delivery</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="cardComponent p-3 shadow-sm d-flex justify-content-around align-items-center rounded">
+                    <div>
+                        <h3 class="fs-2">%25</h3>
+                        <p class="fs-5">Increase</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row g-3 my-2 text-white">
+            <div class="col-md-3">
+                <div class="cardComponent p-3 shadow-sm d-flex justify-content-around align-items-center rounded">
+                    <div>
+                        <h3 class="fs-2">1250</h3>
+                        <p class="fs-5">Clients</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="cardComponent p-3 shadow-sm d-flex justify-content-around align-items-center rounded">
+                    <div>
+                        <h3 class="fs-2">100</h3>
+                        <p class="fs-5">Employee</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="cardComponent p-3 shadow-sm d-flex justify-content-around align-items-center rounded">
+                    <div>
+                        <h3 class="fs-2">5</h3>
+                        <p class="fs-5">Chef Master</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- <div class="container mt-5 py-5 px-3 bg-light shadow-lg bg-white rounded">
         <table id="table" class="ui celled table">
             <thead>
                 <tr>
@@ -80,27 +148,26 @@
                                                 <form>
                                                     <div class="form-group">
                                                         <label for="title">Title</label>
-                                                        <input type="text" class="form-control" placeholder="Title">
+                                                        <input type="text" class="form-control w-50" placeholder="Title">
                                                         <small id="emailHelp" class="form-text text-muted"></small>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="Description">Description</label>
-                                                        <input type="text" class="form-control"
+                                                        <input type="text" class="form-control w-50"
                                                             placeholder="Description">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="Price">Price</label>
-                                                        <input type="text" class="form-control" placeholder="Price">
+                                                        <input type="text" class="form-control w-50" placeholder="Price">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="Category">Category</label>
-                                                        <input type="text" class="form-control" placeholder="Category">
+                                                        <input type="text" class="form-control w-50" placeholder="Category">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="Image">Image</label>
-                                                        <input type="text" class="form-control" placeholder="Image">
+                                                        <input type="text" class="form-control w-50" placeholder="Image">
                                                     </div>
-                                                    <button type="submit" class="btn btn-primary">Submit</button>
                                                 </form>
                                             </div>
                                             <div class="modal-footer">
@@ -119,13 +186,22 @@
             </tbody>
         </table>
 
-    </div>
+    </div> --}}
+
+
+    <link rel="stylesheet" href="{{ asset('css/adminCustom.css') }}">
+
+    <img class="heroImg" src="{{ asset('photos/backgroundDashboard.jpg') }}" alt="">
+
     <script>
         $(document).ready(function() {
             $('#table').DataTable({
-                "dom": 'frtip',
+                "dom": 'Bfrtip',
+                buttons: [
+                    'excel', 'pdf', 'print'
+                ],
                 "columnDefs": [{
-                    "targets": 1,
+                    "targets": [1, 3, 6],
                     "orderable": false
                 }],
                 "language": {

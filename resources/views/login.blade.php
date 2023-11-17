@@ -1,8 +1,12 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container min-vh-100 d-flex justify-content-center align-items-center">
+
+<link rel="stylesheet" href="{{ asset('css/loginCustom.css') }}">
+
+<img src="{{ asset('photos/backgroundImage.jpg') }}" alt="">
+    <div class="container min-vh-100 d-flex justify-content-center align-items-center text-white">
         <form action="{{ route('validateLogin') }}" method="POST"
-            class="p-3 bg-light rounded border form-group row col-4">
+            class="p-3 rounded form-group row col-4">
             @csrf
             <h1 class="text-center">Login</h1>
             <div class="mb-3">
@@ -14,7 +18,7 @@
                         name="email" value="{{ old('email') }}">
                 </div>
                 @error('email')
-                    <div class="mt-1 w-100 p-1 alert alert-danger text-center">{{ $message }}</div>
+                    <div class="mt-1 w-100 p-1 text-center">{{ $message }}</div>
                 @enderror
             </div>
             <div class="mb-3">
@@ -26,7 +30,7 @@
                         id="password" name="password">
                 </div>
                 @error('password')
-                    <div class="mt-1 w-100 p-1 alert alert-danger text-center">{{ $message }}</div>
+                    <div class="mt-1 w-100 p-1 text-center">{{ $message }}</div>
                 @enderror
             </div>
             <div class="mb-3 form-check">
