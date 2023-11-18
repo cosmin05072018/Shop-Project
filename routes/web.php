@@ -20,6 +20,7 @@ Route::post('validateLogin', [AuthController::class, 'validateLogin'])->name('va
 
 Route::group(['middleware' => ['customAuth']], function () {
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
-    Route::get('addProduct', [AdminController::class, 'addProduct'])->name('addProduct');
+    Route::get('addProduct', [AdminController::class, 'addProductView'])->name('addProduct');
+    Route::post('addProductDataBase', [AdminController::class, 'addProductDataBase'])->name('addProductDataBase');
     Route::post('logout', [AdminController::class, 'logout'])->name('logout');
 });

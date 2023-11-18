@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+
+<link rel="stylesheet" href="{{ asset('css/dashboardCustom.css') }}">
     <nav class="navbar navbar-expand-lg navbar-dark p-3 text-white">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Hello, {{ $data['admin'] }}</a>

@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\addProductDB;
 use App\Models\Product;
-
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
 class AdminController extends Controller
@@ -30,7 +30,12 @@ class AdminController extends Controller
         return view('dashboard', ['data' => $dataToDashboard]);
     }
 
-    public function addProduct(){
+    public function addProductView(){
         return view('addProduct');
+    }
+
+    public function addProductDataBase(addProductDB $request){
+        dd($request->all());
+        return redirect()->back();
     }
 }
