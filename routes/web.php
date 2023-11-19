@@ -21,6 +21,7 @@ Route::post('validateLogin', [AuthController::class, 'validateLogin'])->name('va
 Route::group(['middleware' => ['customAuth']], function () {
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
     Route::get('addProduct', [AdminController::class, 'addProductView'])->name('addProduct');
+    Route::get('viewProducts', [AdminController::class, 'viewProducts'])->name('viewProducts');
     Route::post('addProductDataBase', [AdminController::class, 'addProductDataBase'])->name('addProductDataBase');
     Route::post('logout', [AdminController::class, 'logout'])->name('logout');
 });

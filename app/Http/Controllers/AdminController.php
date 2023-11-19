@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Http\Requests\addProductDB;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -30,12 +31,33 @@ class AdminController extends Controller
         return view('dashboard', ['data' => $dataToDashboard]);
     }
 
-    public function addProductView(){
+    public function addProductView()
+    {
         return view('addProduct');
     }
 
-    public function addProductDataBase(addProductDB $request){
-        dd($request->all());
+    public function addProductDataBase(addProductDB $request)
+    {
+
+        $newImageName = time() . '-' . $request->title . '.' . $request->image->extension();
+        $request->image->move(public_path('storage/photos'), $newImageName);
+        $product = new Product;
+        $data = [
+            'title' => $request->title,
+            'description' => $request->description,
+            'price' => $request->price,
+            'category' => $request->category,
+            'image' => $newImageName
+        ];
+        $product->fill($data);
+        $product->save();
+
+
         return redirect()->back();
+    }
+
+    public function viewProducts(){
+        $products = new Product;
+        return view('viewProducts', ['products' => $products->all()]);
     }
 }

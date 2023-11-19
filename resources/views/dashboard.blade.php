@@ -35,7 +35,7 @@
                         <a class="nav-link mx-2 " aria-current="page" href="#">Orders</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-2 " aria-current="page" href="#">View Products</a>
+                        <a class="nav-link mx-2 " aria-current="page" href="{{ route('viewProducts') }}">View Products</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link mx-2" href="{{ route('addProduct') }}">Add Products</a>
