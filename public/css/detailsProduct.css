@@ -1,0 +1,15 @@
+body {
+    background: #222224 !important;
+    width: 100vw;
+    height: 100vh;
+}
+
+.optionsBtn {
+    background-color: rgb(255, 255, 255) !important;
+    color: rgb(15, 15, 15)!important;
+}
+
+.optionsBtn:hover {
+    background-color: rgb(0, 0, 0) !important;
+    color: rgb(255, 255, 255) !important;
+}

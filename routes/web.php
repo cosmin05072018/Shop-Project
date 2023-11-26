@@ -22,6 +22,12 @@ Route::group(['middleware' => ['customAuth']], function () {
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
     Route::get('addProduct', [AdminController::class, 'addProductView'])->name('addProduct');
     Route::get('viewProducts', [AdminController::class, 'viewProducts'])->name('viewProducts');
+    Route::get('detailsProduct/{id}', [AdminController::class, 'detailsProduct'])->name('detailsProduct');
+    Route::get('updateProductView/{id}', [AdminController::class, 'updateProductView'])->name('updateProductView');
+
     Route::post('addProductDataBase', [AdminController::class, 'addProductDataBase'])->name('addProductDataBase');
     Route::post('logout', [AdminController::class, 'logout'])->name('logout');
+    Route::post('deleteProduct/{id}', [AdminController::class, 'deleteProduct'])->name('deleteProduct');
+
+    Route::patch('updateProduct/{id}', [AdminController::class, 'updateProduct'])->name('updateProduct');
 });
