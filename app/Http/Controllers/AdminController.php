@@ -65,14 +65,37 @@ class AdminController extends Controller
 
         $categories = Category::all();
 
-        if ($request->has('date_filter')) {
-            $products = Product::where('category', $request->date_filter)->paginate(10);
-            if ($request->date_filter === 'all') {
+        $priceRange = [
+            '0' => [
+                'value' => '0-50'
+            ],
+            '1' => [
+                'value' => '50-100'
+            ],
+            '2' => [
+                'value' => '100-150'
+            ],
+            '3' => [
+                'value' => '150-200'
+            ],
+        ];
+
+        if ($request->has('category_filter')) {
+            $idCategory = Category::where('category', $request->category_filter)->first();
+
+            if ($request->category_filter === 'all') {
                 $products = Product::paginate(10);
+            }elseif($request->category_filter && $request->filterPrice){
+                $filterPriceExplode = explode('-', $request->filterPrice);
+                $valOne = $filterPriceExplode[0];
+                $valTwo = $filterPriceExplode[1];
+                $products = Product::where('category_id', $idCategory->id)->whereBetween('price', [$valOne, $valTwo])->paginate(10);
+            } else {
+                $products = Product::where('category_id', $idCategory->id)->paginate(10);
             }
         }
 
-        return view('viewProducts', ['products' => $products, 'categories' => $categories]);
+        return view('viewProducts', ['products' => $products, 'categories' => $categories, 'priceRange' => $priceRange]);
     }
 
     public function detailsProduct(Request $request)

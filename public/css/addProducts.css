@@ -4,46 +4,16 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    background: #222224;
 }
 
-img {
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-    filter: brightness(0.5);
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    background-size: cover;
-    background-position: center;
+.optionsBtn {
+    background-color: rgb(255, 255, 255) !important;
+    color: rgb(15, 15, 15)!important;
 }
 
-.card {
-    background: none;
+.optionsBtn:hover {
+    background-color: rgb(0, 0, 0) !important;
+    color: rgb(255, 255, 255) !important;
 }
 
-form {
-    box-shadow: rgba(255, 255, 255, 0.116) 0px 54px 55px,
-        rgba(0, 0, 0, 0.637) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
-        rgba(0, 0, 0, 0.692) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-}
-
-.form-control {
-    background-color: rgba(255, 255, 255, 0.274);
-    color: rgb(255, 255, 255);
-}
-
-.form-control::placeholder {
-    color: rgb(255, 255, 255);
-}
-
-.btn {
-    color: rgb(255, 255, 255);
-    background-color: rgba(255, 255, 255, 0.274);
-}
-
-.btn:hover {
-    color: rgb(0, 0, 0);
-    background-color: rgb(255, 255, 255);
-}

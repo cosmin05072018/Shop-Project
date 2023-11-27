@@ -3,10 +3,8 @@
 @section('content')
     <link rel="stylesheet" href="{{ asset('css/addProducts.css') }}">
 
-    <img src="{{ asset('photos/backgroundAddProducts.jpg') }}" alt="backgroundAddProducts">
-
     <div class="container">
-        <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop"
+        <button class="btn bg-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop"
             aria-controls="staticBackdrop">
             Options
         </button>
@@ -29,10 +27,10 @@
                 </div>
             </div>
         </div>
-        <div class="card text-white border-0">
+        <div class="card border-0 mt-3">
             <div class="card-body">
                 <div class="card border-0">
-                    <div class="card-body text-white">
+                    <div class="card-body">
                         <form action="{{ route('addProductDataBase') }}" method="POST" enctype="multipart/form-data"
                             class="p-5 rounded">
                             @csrf
@@ -95,7 +93,7 @@
                                 </div>
                             </div>
                             <div class="button d-flex justify-content-center">
-                                <button type="submit" class="btn w-0 mt-4">Insert Product in DataBase</button>
+                                <button type="submit" class="btn optionsBtn w-0 mt-4">Insert Product in DataBase</button>
                             </div>
                         </form>
                     </div>

@@ -29,16 +29,26 @@
                     <h1>Filters</h1>
                     <form action="{{ route('viewProducts') }}" method="get" class="mt-3">
                         <label for="Category" class="col-form-label"><b>Category</b></label>
-                            <select name="date_filter" id="date_filter" class="form-select">
+                            <select name="category_filter" id="date_filter" class="form-select">
                                 <option value="all" name="all"> All Categories </option>
                                 @foreach ($categories as $category)
                                 <option value="{{{ $category['category'] }}}">{{ $category['category']}}</option>
                                 @endforeach
                             </select>
-                            <label for="Search Product" class="col-form-label"><b>Search Product</b></label>
-                        <input type="text" class="form-control" name="searchProduct" placeholder="Search Product...">
-                        <label for="Price" class="col-form-label"><b>Price</b></label>
-                        <button type="submit" class="btn btn-secondary ms-3 mt-5">Filter</button>
+                            <label for="Price" class="col-form-label mt-3"><b>Price</b></label>
+                            <br>
+                            @foreach ( $priceRange as $elem)
+                            <input type="checkbox" name="filterPrice" class="exclusive-checkbox" value="{{ $elem['value'] }}">
+                            {{ $elem['value'] }}
+                            <br>
+                            @endforeach
+                        <button type="submit" class="btn btn-secondary mt-3">Filter</button>
+                        <br>
+                        <label for="Search Product" class="col-form-label"><b>Search Product</b></label>
+                        <div class="d-flex">
+                            <input type="text" class="form-control" name="searchProduct" placeholder="Search Product...">
+                            <button class="btn btn-primary ms-2">Search</button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -103,6 +113,9 @@
     </div>
     <script>
         $(document).ready(function() {
+            $('.exclusive-checkbox').change(function () {
+            $('.exclusive-checkbox').not(this).prop('checked', false);
+        });
             $('#table').DataTable({
                 "dom": 'frti',
                 "columnDefs": [{
