@@ -17,3 +17,7 @@ body {
     color: rgb(255, 255, 255) !important;
 }
 
+.navbar-brand{
+    cursor: pointer;
+}
+

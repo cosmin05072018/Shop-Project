@@ -17,14 +17,23 @@
             <div class="offcanvas-body">
                 <div>
                     <nav class="navbar ">
-                        <div class="container-fluid">
-                            <a class="navbar-brand" href="{{ route('dashboard') }}">Home</a>
+                        <div class="container-fluid border border-3 rounded mb-2">
+                            <a class="navbar-brand d-flex align-items-center justify-content-between w-100" href="{{ route('dashboard') }}">
+                                Home
+                                <i class="bi bi-house-door-fill"></i>
+                            </a>
                         </div>
-                        <div class="container-fluid">
-                            <a class="navbar-brand" href="{{ route('viewProducts') }}">Back</a>
+                        <div class="container-fluid border border-3 rounded mb-2">
+                            <a class="navbar-brand d-flex align-items-center justify-content-between w-100" href="{{ route('viewProducts') }}">
+                                Back
+                                <i class="bi bi-backspace-fill"></i>
+                            </a>
                         </div>
-                        <div class="container-fluid">
-                            <a class="navbar-brand" href="{{ route('addProduct') }}">Add Products</a>
+                        <div class="container-fluid border border-3 rounded mb-2">
+                            <a class="navbar-brand d-flex align-items-center justify-content-between w-100" href="{{ route('addProduct') }}">
+                                Add Products
+                                <i class="bi bi-database-fill-add"></i>
+                            </a>
                         </div>
                     </nav>
                 </div>

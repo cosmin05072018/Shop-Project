@@ -24,6 +24,7 @@ Route::group(['middleware' => ['customAuth']], function () {
     Route::get('viewProducts', [AdminController::class, 'viewProducts'])->name('viewProducts');
     Route::get('detailsProduct/{id}', [AdminController::class, 'detailsProduct'])->name('detailsProduct');
     Route::get('updateProductView/{id}', [AdminController::class, 'updateProductView'])->name('updateProductView');
+    Route::get('adminProfile', [AdminController::class, 'adminProfile'])->name('adminProfile');
 
     Route::post('addProductDataBase', [AdminController::class, 'addProductDataBase'])->name('addProductDataBase');
     Route::post('logout', [AdminController::class, 'logout'])->name('logout');

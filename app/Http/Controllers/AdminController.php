@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\validateInputProduct;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\AdminProfile;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -20,16 +21,41 @@ class AdminController extends Controller
 
     public function dashboard()
     {
-        $products = Product::all();
 
         $userName = config('adminCredentials.username');
 
         $dataToDashboard = [
-            'admin' => $userName,
-            'products' => $products
+            'admin' => $userName
         ];
 
-        return view('dashboard', ['data' => $dataToDashboard]);
+        $quotesAPI = [
+            0 => [
+                'author' => 'Thomas Keller',
+                'quote' => 'A recipe has no soul. You as the cook must bring soul to the recipe.'
+            ],
+            1 => [
+                'author' => 'Wolfgang Puck',
+                'quote' => 'Cooking is like painting or writing a song. Just as there are only so many notes or colors, there are only so many flavors—it’s how you combine them that sets you apart.'
+            ],
+            2 => [
+                'author' => 'Guy Fieri',
+                'quote' => 'Cooking with kids is not just about ingredients, recipes, and cooking. It’s about harnessing imagination, empowerment, and creativity.'
+            ],
+            3 => [
+                'author' => 'Craig Claiborne',
+                'quote' => 'Cooking is at once child’s play and adult joy. And cooking done with care is an act of love.'
+            ],
+            4 => [
+                'author' => 'Gordon Ramsay',
+                'quote' => 'So when people ask me, ‘What do you think of Michelin?’ I don’t cook for guides. I cook for customers.'
+            ],
+            5 => [
+                'author' => 'Judith B. Jones',
+                'quote' => 'Cooking demands attention, patience, and above all, a respect for the gifts of the earth. It is a form of worship, a way of giving thanks.'
+            ]
+        ];
+
+        return view('dashboard', ['data' => $dataToDashboard, 'quotesAPI' => $quotesAPI]);
     }
 
     public function addProductView()
@@ -61,41 +87,35 @@ class AdminController extends Controller
 
     public function viewProducts(Request $request)
     {
+        //products, categories
         $products = Product::paginate(10);
-
         $categories = Category::all();
 
-        $priceRange = [
-            '0' => [
-                'value' => '0-50'
-            ],
-            '1' => [
-                'value' => '50-100'
-            ],
-            '2' => [
-                'value' => '100-150'
-            ],
-            '3' => [
-                'value' => '150-200'
-            ],
-        ];
+        //min and max prices
+        $minPriceProducts = Product::min('price');
+        $maxPriceProducts = Product::max('price');
 
-        if ($request->has('category_filter')) {
+        //filter by category
+        if ($request->category_filter) {
+
+            //search id category
             $idCategory = Category::where('category', $request->category_filter)->first();
 
+            $minPrice = $request->minValue;
+            $maxPrice = $request->maxValue;
+
             if ($request->category_filter === 'all') {
-                $products = Product::paginate(10);
-            }elseif($request->category_filter && $request->filterPrice){
-                $filterPriceExplode = explode('-', $request->filterPrice);
-                $valOne = $filterPriceExplode[0];
-                $valTwo = $filterPriceExplode[1];
-                $products = Product::where('category_id', $idCategory->id)->whereBetween('price', [$valOne, $valTwo])->paginate(10);
+                //if category is all, then return all products
+                $products = Product::whereBetween('price', [$minPrice, $maxPrice])->paginate(10);
             } else {
-                $products = Product::where('category_id', $idCategory->id)->paginate(10);
+                $products = Product::where('category_id', $idCategory->id)->get();
+                $maxPriceProducts = $products->max('price');
+                $minPriceProducts = $products->min('price');
+                $products = Product::where('category_id', $idCategory->id)->whereBetween('price', [$minPrice, $maxPrice])->paginate(10);
             }
         }
 
-        return view('viewProducts', ['products' => $products, 'categories' => $categories, 'priceRange' => $priceRange]);
+        return view('viewProducts', ['products' => $products, 'totalProducts' => Product::count(), 'categories' => $categories, 'priceRange' => [$minPriceProducts, $maxPriceProducts]]);
     }
 
     public function detailsProduct(Request $request)
@@ -110,7 +130,7 @@ class AdminController extends Controller
     {
         Product::findOrFail($request->id)->destroy($request->id);
 
-        return redirect()->back();
+        return redirect()->back()->with('statusDelete', 'The product has been deleted successfully!');
     }
 
     public function updateProductView(Request $request)
@@ -142,6 +162,15 @@ class AdminController extends Controller
         $product->fill($data);
         $product->save();
 
-        return redirect()->route('viewProducts');
+        return redirect()->route('viewProducts')->with('statusUpdate', 'The product has been updated successfully!');
+    }
+
+    public function adminProfile(){
+
+        $adminProfile = AdminProfile::all();
+
+        return view('adminProfile', ['adminProfile' => $adminProfile]);
     }
 }
+
+
