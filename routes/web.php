@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
 use App\Http\Middleware\CustomAuth;
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +15,12 @@ use App\Http\Middleware\CustomAuth;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+Route::get('/', [UserController::class, 'index'])->name('index');
 Route::get('login', [AuthController::class, 'login'])->name('login');
+Route::get('menu', [UserController::class, 'menu'])->name('menu');
+
 Route::post('validateLogin', [AuthController::class, 'validateLogin'])->name('validateLogin');
+Route::post ('userDetails', [UserController::class, 'userDetails'])->name('userDetails');
 
 Route::group(['middleware' => ['customAuth']], function () {
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');

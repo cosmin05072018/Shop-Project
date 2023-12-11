@@ -1,0 +1,28 @@
+body {
+    background: #222224 !important;
+    width: 100vw;
+    height: 100vh;
+}
+
+.product-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-size: cover;
+    background-position: center;
+}
+
+.btn-add,
+.btn-details{
+    background: #222224 !important;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.btn-add:hover,
+.btn-details:hover{
+    transition: ease-in 1s;
+    background: #ffffff !important;
+    color: #222224;
+    border: 1px solid #222224;
+}

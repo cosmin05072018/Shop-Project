@@ -21,7 +21,6 @@ class AdminController extends Controller
 
     public function dashboard()
     {
-
         $userName = config('adminCredentials.username');
 
         $dataToDashboard = [
@@ -54,8 +53,8 @@ class AdminController extends Controller
                 'quote' => 'Cooking demands attention, patience, and above all, a respect for the gifts of the earth. It is a form of worship, a way of giving thanks.'
             ]
         ];
-
-        return view('dashboard', ['data' => $dataToDashboard, 'quotesAPI' => $quotesAPI]);
+        $adminProfile = AdminProfile::all();
+        return view('dashboard', ['data' => $dataToDashboard, 'quotesAPI' => $quotesAPI, 'adminProfile' => $adminProfile]);
     }
 
     public function addProductView()

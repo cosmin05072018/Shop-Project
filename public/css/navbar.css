@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Josefin+Sans:wght@300;400;500;600;700&family=Pacifico&family=Permanent+Marker&family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Josefin+Sans:wght@300;400;500;600;700&family=Kalam:wght@300;400;700&family=Pacifico&family=Permanent+Marker&family=Playpen+Sans:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cookie&family=Kalnia:wght@300;400;500;600;700&display=swap');
+
+.title {
+    font-family: 'Pacifico', cursive;
+}
+
+.text-yellow{
+    background-color: #ffffff !important;
+    color: #ff9a00 !important;
+    font-weight: bold !important;
+    font-size: 16px !important;
+}
+
+.bg-yellow{
+    background-color: #ff9a00 !important;
+}
+
+.nav-link{
+    font-family: 'Cookie', cursive;
+    font-size: 32px !important;
+    letter-spacing: 3px !important;
+}
+
+.bi-cart,
+.bi-person,
+.bi-search{
+    cursor: pointer;
+    font-size: 25px !important;
+}
+
+.bi-cart:hover,
+.bi-person:hover,
+.bi-search:hover{
+    color: #ff9a00 !important;
+}
+.bg-yellow:hover{
+    color: #ff9a00 !important;
+    background-color: #ffffff !important;
+    transition: ease-in 0.5s !important;
+}
+
+.text-yellow:hover{
+    color: #ffffff !important;
+    background-color: #ff9a00 !important;
+    transition: ease-in 0.5s !important;
+}
+
+.user{
+    display: inline;
+    font-size: 14px;
+}

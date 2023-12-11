@@ -1,39 +1,41 @@
-<nav class="navbar navbar-expand-lg navbar-dark p-3 text-white">
+<link rel="stylesheet" href="{{asset('css/navbar.css')}}">
+
+<nav class="navbar navbar-expand-lg navbar-dark px-5 py-4 text-white">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Hello,</a>
+        <h1 class="title m-auto">Pizza Hot</h1>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ms-auto ">
+            <ul class="navbar-nav ms-auto d-flex align-items-center justify-content-between">
                 <li class="nav-item">
-                    <a class="nav-link mx-2 active" aria-current="page" href="{{ route('dashboard') }}">Home</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link mx-2 dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Options
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="#">Your Profile</a></li>
-                        <li><a class="dropdown-item" href="#">About Us</a></li>
-                        <li><a class="dropdown-item" href="#">
-                                <form action="{{ route('logout') }}" method="POST">
-                                    @csrf
-                                    <button class="btn btn-danger" type="submit">Logout</button>
-                                </form>
-                            </a></li>
-                    </ul>
+                    <a class="nav-link mx-2 active px-4 text-yellow rounded-pill" aria-current="page"
+                       href="#">Reservations</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mx-2 " aria-current="page" href="#">Orders</a>
+                   @if(\Request::route()->getName() == 'index')
+                        <a class="nav-link mx-2 px-4 text-yellow rounded-pill" aria-current="page" href="{{route('menu')}}">Menu</a>
+                    @else
+                        <a class="nav-link mx-2 px-4 text-yellow rounded-pill" aria-current="page" href="{{route('index')}}">Home</a>
+                   @endif
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mx-2 " aria-current="page" href="{{ route('viewProducts') }}">View Products</a>
+                    <a class="nav-link mx-2 px-4 text-yellow  rounded-pill" aria-current="page" href="#">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mx-2" href="{{ route('addProduct') }}">Add Products</a>
+                    <a class="nav-link mx-2 px-4 text-yellow rounded-pill" href="#">Book Table</a>
+                </li>
+                <li class="mx-3 d-flex align-items-center justify-content-between mx-5">
+                    <i class="bi bi-cart mx-5"></i>
+                    <i class="bi bi-person mx-5">
+                        @if(session('user'))
+                            <p class="user">Hello, {{session('user')}}</p>
+                        @endif</i>
+                    <i class="bi bi-search mx-5"></i>
+                </li>
+                <li>
+                    <a class="nav-link mx-2 px-5 text-white bg-yellow rounded-pill" href="#">Order Online</a>
                 </li>
             </ul>
         </div>
