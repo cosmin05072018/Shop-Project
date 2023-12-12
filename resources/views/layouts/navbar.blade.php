@@ -27,15 +27,14 @@
                     <a class="nav-link mx-2 px-4 text-yellow rounded-pill" href="#">Book Table</a>
                 </li>
                 <li class="mx-3 d-flex align-items-center justify-content-between mx-5">
-                    <i class="bi bi-cart mx-5"></i>
+                    <a href="{{route('cart')}}"><i class="bi bi-cart mx-5 text-white" value="{{ count(session('idProducts', [])) }}"></i></a>
                     <i class="bi bi-person mx-5">
                         @if(session('user'))
                             <p class="user">Hello, {{session('user')}}</p>
                         @endif</i>
-                    <i class="bi bi-search mx-5"></i>
                 </li>
                 <li>
-                    <a class="nav-link mx-2 px-5 text-white bg-yellow rounded-pill" href="#">Order Online</a>
+                    <a class="nav-link mx-2 px-5 text-white bg-yellow rounded-pill" href="{{route('menu')}}">Order Online</a>
                 </li>
             </ul>
         </div>

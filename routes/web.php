@@ -18,9 +18,11 @@ use App\Http\Middleware\CustomAuth;
 Route::get('/', [UserController::class, 'index'])->name('index');
 Route::get('login', [AuthController::class, 'login'])->name('login');
 Route::get('menu', [UserController::class, 'menu'])->name('menu');
+Route::get('cart', [UserController::class, 'cart'])->name('cart');
 
 Route::post('validateLogin', [AuthController::class, 'validateLogin'])->name('validateLogin');
 Route::post ('userDetails', [UserController::class, 'userDetails'])->name('userDetails');
+Route::post('addToCart/{id}', [UserController::class, 'addToCart'])->name('addToCart');
 
 Route::group(['middleware' => ['customAuth']], function () {
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');

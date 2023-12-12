@@ -31,4 +31,16 @@ body{
     font-size: 30px;
 }
 
+.btn-save-user{
+    background: #ff9a00;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.btn-save-user:hover{
+    color: #ff9a00;
+    background: #ffffff;
+    transition: 1s ease-in-out;
+}
 

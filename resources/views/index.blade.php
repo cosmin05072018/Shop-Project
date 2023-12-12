@@ -9,7 +9,7 @@
             <div class="col align-self-start">
                 <h1 class="title-section-center">Good Food Restaurant</h1>
                 <p class="paragraph-section-center">Join us for a culinary escapade where variety meets excellence, and every bite tells a story. Our restaurant is not just a place to eat; it's a celebration of taste, an ode to culinary mastery that invites you to embark on a journey of gastronomic discovery.</p>
-                <a class="nav-link mx-auto py-3 text-white bg-yellow rounded-pill w-25" href="#">Order Now</a>
+                <a class="nav-link mx-auto py-3 text-white bg-yellow rounded-pill w-25" href="{{route('menu')}}">Order Now</a>
             </div>
             <div class="col align-self-end"></div>
         </div>
@@ -23,21 +23,20 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <h2>Enter your name for a better experience, please!</h2>
+                    <h3 class="text-center">Enter your name for a better experience, please!</h3>
                 </div>
                 <form method="POST" action="{{route('userDetails')}}">
                     @csrf
                     <div class="container">
                         <div class="form-group d-flex align-items-center justify-content-between">
-                            <label for="exampleInputEmail1">Your Name:</label>
-                            <input type="text" name="username" class="form-control w-75" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name">
+                            <input type="text" name="username" class="form-control w-100 my-3" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Your name">
                         </div>
                         @error('username')
                         <div class="mt-3 p-1 text-center alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
-                    <div class="modal-footer mt-3">
-                        <button type="submit" class="btn btn-primary">Save</button>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-save-user w-100">Save</button>
                     </div>
                 </form>
             </div>
