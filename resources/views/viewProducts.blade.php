@@ -98,33 +98,10 @@
                                     <i class="bi bi-pass-fill"></i>
                                 </a>
                             </button>
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-danger w-25 d-flex align-items-center justify-content-between" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                Delete
-                                <i class="bi bi-trash"></i>
-                            </button>
-                            <!-- Modal -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Delete Product</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            Are you sure you want to delete this product?
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
-                                            </button>
-                                            <form action="{{ route('deleteProduct', [$product->id]) }}" method="POST">
-                                                @csrf
-                                                <button type="submit" class="btn btn-danger"> Yes </button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <form action="{{ route('deleteProduct', $product->id) }}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn btn-danger w-100 d-flex align-items-center justify-content-between"> Delete <i class="bi bi-trash"></i></button>
+                            </form>
                         </div>
                     </td>
                 </tr>
@@ -209,7 +186,6 @@
                             }
 
                             const minPercentage = 100;
-                            console.log(minPercentage);
                             const maxPercentage = 100;
 
                             rangeFill.style.left = minPercentage + "%";

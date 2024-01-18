@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cookie&family=Kalnia:wght@300;400;500;600;700&display=swap');
 
-body{
+body {
     max-height: 100vh;
     max-width: 100vw;
 }
@@ -21,26 +21,41 @@ body{
     background-position: center;
 }
 
-.title-section-center{
+.title-section-center {
     font-family: 'Cookie', cursive;
     font-size: 60px;
 }
 
-.paragraph-section-center{
+.paragraph-section-center {
     font-family: 'Cookie', cursive;
     font-size: 30px;
 }
 
-.btn-save-user{
+.btn-save-user {
     background: #ff9a00;
     color: #ffffff;
     font-weight: bold;
     font-size: 18px;
 }
 
-.btn-save-user:hover{
+.btn-save-user:hover {
     color: #ff9a00;
     background: #ffffff;
     transition: 1s ease-in-out;
 }
 
+.orangeColor {
+    color: #ff9a00;
+}
+
+
+/*FOOTER*/
+
+footer {
+    background: #212529 !important;
+    bottom: 0;
+}
+
+/*.nav-link{*/
+/*    color: #ff9a00 !important;*/
+/*}*/

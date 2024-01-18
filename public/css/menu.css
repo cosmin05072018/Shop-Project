@@ -12,32 +12,105 @@ body {
     background-position: center;
 }
 
-.btn-add{
-    background: #222224 !important;
-    color: #ffffff;
-    font-weight: bold;
-}
-
-.btn-add:hover{
-    transition: ease-in 1s;
-    background: #4f4e4e !important;
-    color: #222224;
-}
-
-.btn-filter{
+.btn-filter {
     background: #ff9a00;
     color: #ffffff;
     font-weight: bold;
     font-size: 18px;
+    transition: ease-in-out 1s;
 }
 
-.btn-filter:hover{
-    transition: ease-in-out 1s;
+.btn-filter:hover {
     background: #ffffff;
     color: #ff9a00;
 }
 
-.colorOrange{
+.colorOrange {
     color: #ff9a00;
+}
+
+.card {
+    transition: transform 1s;
+    width: 400px;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0px 9px 20px 0px rgba(14, 88, 48, 0.1);
+}
+
+.card:hover {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    transform: scale(1.02);
+}
+
+.price-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 10px;
+}
+
+label {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+p {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.range-slider {
+    position: relative;
+    margin: 15px 0 30px 0;
+}
+
+.range-fill {
+    height: 6px;
+    background-color: #36b37e;
+    position: absolute;
+    z-index: 1;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    background: transparent;
+    position: absolute;
+    left: 0;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background: #36b37e;
+    cursor: pointer;
+    margin-top: -5px;
+    position: relative;
+    z-index: 1;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 5px;
+    background: #e8e8e8;
+    border-radius: 3px;
+    border: none;
+}
+
+.filter-products,
+.products {
+    transition: linear 0.5s;
+}
+
+.filter-products:hover,
+.products:hover {
+    box-shadow: rgb(238 238 241 / 68%) 0px 7px 29px 0px;
+}
+
+.badge{
+    background-color: #ff9a00;
 }
 

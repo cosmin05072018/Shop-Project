@@ -19,10 +19,12 @@ Route::get('/', [UserController::class, 'index'])->name('index');
 Route::get('login', [AuthController::class, 'login'])->name('login');
 Route::get('menu', [UserController::class, 'menu'])->name('menu');
 Route::get('cart', [UserController::class, 'cart'])->name('cart');
+Route::get('infoProduct/{id}', [UserController::class, 'infoProduct'])->name('infoProduct');
 
 Route::post('validateLogin', [AuthController::class, 'validateLogin'])->name('validateLogin');
 Route::post ('userDetails', [UserController::class, 'userDetails'])->name('userDetails');
-Route::post('addToCart/{id}', [UserController::class, 'addToCart'])->name('addToCart');
+Route::post('addToCart/{id}', [UserController::class, 'addToCart'])->name('addRemoveToCart');
+Route::post('updateQuantity/{id}', [UserController::class, 'updateQuantity'])->name('updateQuantity');
 
 Route::group(['middleware' => ['customAuth']], function () {
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');

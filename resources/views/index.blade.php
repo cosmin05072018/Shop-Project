@@ -7,7 +7,7 @@
     <div class="container-fluid text-center text-white d-flex align-items-center h-75 w-100 mt-5">
         <div class="row section-left mx-5">
             <div class="col align-self-start">
-                <h1 class="title-section-center">Good Food Restaurant</h1>
+                <h1 class="title-section-center">Good Food <span class="orangeColor">Restaurant</span></h1>
                 <p class="paragraph-section-center">Join us for a culinary escapade where variety meets excellence, and every bite tells a story. Our restaurant is not just a place to eat; it's a celebration of taste, an ode to culinary mastery that invites you to embark on a journey of gastronomic discovery.</p>
                 <a class="nav-link mx-auto py-3 text-white bg-yellow rounded-pill w-25" href="{{route('menu')}}">Order Now</a>
             </div>

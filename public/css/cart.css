@@ -1,5 +1,17 @@
 body {
     background: #222224 !important;
-    width: 100vw;
-    height: 100vh;
+
+}
+
+.checkout {
+    background: #ff9a00;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 18px;
+    transition: ease-in-out 1s;
+}
+
+.checkout:hover {
+    background: #ffffff;
+    color: #ff9a00;
 }
