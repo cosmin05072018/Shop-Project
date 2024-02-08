@@ -17,7 +17,7 @@
                             @csrf
                            <div class="d-flex justify-content-around">
                                <a href="{{route('menu')}}" class="btn btn-danger w-25 text-white">Back to Menu</a>
-                               @if(session('idProducts') && in_array($product['id'], session('idProducts')))
+                               @if(session('idProducts') && isset(session('idProducts')[$product['id']]) && session('idProducts')[$product['id']] > 0)
                                    <input type="submit" name="removeToCart" class="btn btn-danger w-25"
                                           value="Remove to cart">
                                @else

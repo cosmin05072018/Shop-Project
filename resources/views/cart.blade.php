@@ -47,7 +47,6 @@
                                             <p class="text-start text-md-center">
                                                 <strong class="totalPriceProduct{{$product['id']}}">{{session('idProducts')[$product['id']] * $product['price'] }}.00 $</strong>
                                             </p>
-
                                             <form action="{{route('addRemoveToCart', $product['id'])}}" method="post">
                                                 @csrf
                                                 <input type="submit" name="removeToCart" class="btn btn-danger w-100"
@@ -71,7 +70,7 @@
                                         Cost products:
                                         <strong>
                                             @if($products)
-                                                {{$products->sum('price')}} $
+                                                <div class="totalPrice"></div>
                                             @endif
                                         </strong>
                                     </li>
@@ -98,11 +97,11 @@
                                             </strong>
                                         </div>
                                         <span>
-                                        @if($products && $products->sum('price') < 100)
-                                                <strong>{{$products->sum('price') + 20}} $</strong>
-                                            @else
-                                                <strong>{{$products->sum('price')}} $</strong>
-                                            @endif
+{{--                                        @if($products && $products->sum('price') < 100)--}}
+{{--                                                <strong>{{$products->sum('price') + 20}} $</strong>--}}
+{{--                                            @else--}}
+{{--                                                <strong>{{$products->sum('price')}} $</strong>--}}
+{{--                                            @endif--}}
                                     </span>
                                     </li>
                                 </ul>
@@ -170,14 +169,26 @@
                     processData: false,
                     contentType: false,
                     success: function (response) {
+                        $('.totalPrice').html(response.totalCartSum + ' $');
                         let totalPriceProduct = '.totalPriceProduct' + id;
-                        $(totalPriceProduct).html(response.priceProduct[0].price * valueQuantity + '.00 $');
+                        $(totalPriceProduct).html(response.quantity * response.priceProduct[0].price + '.00 $')
                     },
                     error: function (xhr) {
                         console.log('Error: ' + xhr.responseText);
                     }
                 });
             });
+
+                $.ajax({
+                    type: 'GET',
+                    url: '{{ route("totalPriceCart") }}',
+                    success: function(response) {
+                        $('.totalPrice').html(response.totalCartSum + ' $');
+                    },
+                    error: function(error) {
+                        console.error('Error:', error);
+                    }
+                });
         })
     </script>
 @endsection

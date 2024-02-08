@@ -28,7 +28,7 @@ class UserController extends Controller
         $maxPriceRequest = $request->maxPrice;
 
         $previousUrl = request()->header('referer');
-        $filter= [];
+        $filter = [];
 
         if ($previousUrl) {
             $urlParts = parse_url($previousUrl);
@@ -60,6 +60,7 @@ class UserController extends Controller
         session(['user' => $user]);
         return redirect()->back();
     }
+
     public function addToCart(Request $request)
     {
         $idProduct = $request->id;
@@ -73,15 +74,16 @@ class UserController extends Controller
         }
 
         if ($request->removeToCart) {
-            if (isset($idProductsSession[$idProduct]) && $idProductsSession[$idProduct] > 0) {
-                $idProductsSession[$idProduct]--;
+            $idProductsSession = session('idProducts', []);
 
-                if ($idProductsSession[$idProduct] == 0) {
-                    unset($idProductsSession[$idProduct]);
-                }
+            if (isset($idProductsSession[$idProduct])) {
+                unset($idProductsSession[$idProduct]);
                 session(['idProducts' => $idProductsSession]);
             }
         }
+
+
+
 
 
         return redirect()->back();
@@ -92,9 +94,9 @@ class UserController extends Controller
         $productsIds = array_keys(session('idProducts', []));
         $products = $productsIds ? Product::whereIn('id', $productsIds)->get() : [];
 
-        $categoriesId=[];
+        $categoriesId = [];
 
-        foreach ($products as $product){
+        foreach ($products as $product) {
             $categoriesId[] = $product->category_id;
         }
 
@@ -105,7 +107,8 @@ class UserController extends Controller
         return view('cart', ['products' => $products, 'recommendedProducts' => $recommendedProducts]);
     }
 
-    public function infoProduct(Request $request){
+    public function infoProduct(Request $request)
+    {
         $product = Product::where('id', $request->id)->get();
 
         return view('infoProduct', ['infoProduct' => $product]);
@@ -116,8 +119,31 @@ class UserController extends Controller
         if ($request->ajax()) {
 
             session(['idProducts.' . $request->id => $request->quantity]);
+
             $priceProduct = Product::select('price')->where('id', $request->id)->get();
-            return response()->json(['quantity' => $request->quantity, 'id' => $request->id, 'priceProduct' => $priceProduct]);
+            $idProducts = session('idProducts');
+            $totalCartSum = 0;
+
+            foreach ($idProducts as $productId => $quantity) {
+                $product = Product::select('price')->where('id', $productId)->first();
+                $totalCartSum += $product->price * $quantity;
+            }
+
+            return response()->json(['quantity' => $request->quantity, 'id' => $request->id, 'priceProduct' => $priceProduct, 'totalCartSum' => $totalCartSum]);
+        }
+    }
+
+    public function totalPriceCart(Request $request)
+    {
+        if($request->ajax()){
+            $idProducts = session('idProducts');
+            $totalCartSum = 0;
+
+            foreach ($idProducts as $productId => $quantity) {
+                $product = Product::select('price')->where('id', $productId)->first();
+                $totalCartSum += $product->price * $quantity;
+            }
+            return response()->json(['totalCartSum'=>$totalCartSum]);
         }
     }
 
